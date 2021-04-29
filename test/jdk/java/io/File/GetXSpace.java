@@ -55,7 +55,8 @@ public class GetXSpace {
     private static final boolean IS_WIN = OS_NAME.startsWith("Windows");
 
     // FileSystem Total Used Available Use% MountedOn
-    private static final Pattern DF_PATTERN = Pattern.compile("([^\\s]+)\\s+(\\d+)\\s+\\d+\\s+(\\d+)\\s+\\d+%\\s+([^\\s].*)\n");
+    //private static final Pattern DF_PATTERN = Pattern.compile("([^\\s]+)\\s+(\\d+)\\s+\\d+\\s+(\\d+)\\s+\\d+%\\s+([^\\s].*)\n");
+    private static final Pattern DF_PATTERN = Pattern.compile("([^\\s]+)\\s+(\\d+)\\s+\\d+\\s+(\\d+)\\s+\\d+%\\s+([^\\s].*)$", Pattern.MULTILINE);
 
     private static int fail = 0;
     private static int pass = 0;
