@@ -147,7 +147,9 @@ public class SendReceiveMaxSize {
                 random.nextBytes(testData);
 
                 var sendBuf = ByteBuffer.wrap(testData);
+                System.out.println("Trace 1: about to send");
                 sender.send(sendBuf, addr);
+                System.out.println("Trace 2: send succeeded");
                 var receiveBuf = ByteBuffer.allocate(capacity);
                 receiver.receive(receiveBuf);
 
@@ -164,7 +166,9 @@ public class SendReceiveMaxSize {
                 random.nextBytes(testData);
 
                 sendBuf = ByteBuffer.wrap(testData);
+                System.out.println("Trace 3: about to send");
                 sender.send(sendBuf, addr);
+                System.out.println("Trace 4: send succeeded");
                 receiveBuf = ByteBuffer.allocate(capacity - 1);
                 receiver.receive(receiveBuf);
 
@@ -178,7 +182,9 @@ public class SendReceiveMaxSize {
                 assertEquals(sendBuf.compareTo(receiveBuf), 0);
 
                 var failSendBuf = ByteBuffer.allocate(capacity + 1);
+                System.out.println("Trace 5: about to send");
                 assertThrows(IOE, () ->  sender.send(failSendBuf, addr));
+                System.out.println("Trace 6: IOE thrown as expected");
             }
         }
     }
